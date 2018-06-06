@@ -1,4 +1,4 @@
-import os.path, time, re, urllib.request, urllib.error, urllib.parse
+import os.path, time, re, urllib2
 import xml.etree.ElementTree as ET
 
 tvdbapikey = "A26D3567B57792BD"
@@ -15,11 +15,11 @@ class TvDB:
 		if (force or not os.path.exists(self.animelistfile) or os.path.getmtime(self.animelistfile) < time.time()-(7*24*60*60)):
 			print("anime-list.xml too old! Downloading new version...")
 			
-			u = urllib.request.urlopen(url)
+			u = urllib2.urlopen(url)
 			f = open(self.animelistfile, 'wb')
 			meta = u.info()
 			file_size = int(meta.getheaders("Content-Length")[0])
-			print(("Downloading: %s Bytes: %s" % (self.animelistfile, file_size)))
+			print("Downloading: %s Bytes: %s" % (self.animelistfile, file_size))
 		
 			file_size_dl = 0
 			block_sz = 8192
@@ -32,7 +32,7 @@ class TvDB:
 				f.write(buffer)
 				status = r"%10d  [%3.2f%%]" % (file_size_dl, file_size_dl * 100. / file_size)
 				status = status + chr(8)*(len(status)+1)
-				print(( status,))
+				print( status,)
 		
 			f.close()
 	
@@ -99,7 +99,7 @@ class TvDB:
 			#handle absolute episode mapping
 			if tvdbseason == 'a' and anidbseason == '1':
 				absoluteurl = "http://thetvdb.com/api/"+tvdbapikey+"/series/"+tvdbid+"/absolute/"+str(ep)+"/en.xml"
-				episodedata = ET.fromstring(urllib.request.urlopen(absoluteurl).read())
+				episodedata = ET.fromstring(urllib2.urlopen(absoluteurl).read())
 				tvdbseason = episodedata.find("./Episode/SeasonNumber").text
 				tvdbepnum = episodedata.find("./Episode/EpisodeNumber").text
 			
@@ -113,8 +113,8 @@ class TvDB:
 				seriesdata
 			except NameError:
 				try:
-					seriesdata = ET.fromstring(urllib.request.urlopen(seriesurl).read())
-				except urllib.error.HTTPError as e:
+					seriesdata = ET.fromstring(urllib2.urlopen(seriesurl).read())
+				except urllib2.HTTPError as e:
 					return None
 
 
@@ -122,8 +122,8 @@ class TvDB:
 				episodedata
 			except NameError:
 				try:
-					episodedata = ET.fromstring(urllib.request.urlopen(episodeurl).read())
-				except urllib.error.HTTPError as e:
+					episodedata = ET.fromstring(urllib2.urlopen(episodeurl).read())
+				except urllib2.HTTPError as e:
 					return None
 
 			tvdbseason = "%02d" % (int(tvdbseason))	

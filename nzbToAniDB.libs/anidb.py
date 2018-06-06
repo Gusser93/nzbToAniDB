@@ -221,7 +221,7 @@ for file in anidb.hash.hash_files(files, options.cache, (('ed2k', 'md5', 'sha1',
 				info.update(tvdbinfo)
 				print('{0} {1} S{2} E{3} - {4}'.format(green('TvDB:'), info['tvdbseriesname'].encode('utf-8'), info['tvdbseason'], info['tvdbepnum'][0] if len(info['tvdbepnum']) == 1 else info['tvdbepnum'][0]+"-"+info['tvdbepnum'][len(info['tvdbepnum'])-1], info['tvdbepname'].encode('utf-8')))
 			else:
-				print red('TVDB: ') + 'no match found!'
+				print(red('TVDB: ') + 'no match found!')
 		
 		# Renaming.
 		
@@ -423,7 +423,7 @@ for file in anidb.hash.hash_files(files, options.cache, (('ed2k', 'md5', 'sha1',
 				print('{0} {1}'.format(yellow('Moving to:'), path))
 				if (os.path.exists(path) == False):
 					oldumask = os.umask(000)
-					os.makedirs(path,0777)
+					os.makedirs(path)
 					os.umask(oldumask)
 			
 			
@@ -486,9 +486,9 @@ if options.update and hashed > 0 and hashed > unknown:
 				req = "http://"+plex["host"]+":32400/library/sections/"+section+"/refresh"
 				try:
 					urllib.urlopen(req)
-				except urllib.HTTPError, e:
+				except urllib.HTTPError as e:
 					print(red('Could not notify Plex Media Server'))
-					print e.code
+					print(e.code)
 				else:
 					print(green('Notified Plex Media Server'))
 	except:
@@ -514,9 +514,9 @@ if options.update and hashed > 0 and hashed > unknown:
 				req = "http://"+xbmc["user"]+":"+xbmc["password"]+"@"+xbmc["host"]+":"+xbmc["port"]+"/jsonrpc?request={\"jsonrpc\":\"2.0\",\"method\":\"VideoLibrary.Scan\"}"
 			try:
 				urllib.urlopen(req)
-			except urllib.HTTPError, e:
+			except urllib.HTTPError as e:
 				print(red('Could not notify XBMC'))
-				print e.code
+				print(e.code)
 			else:
 				print(green('Notified XBMC'))
 	except:

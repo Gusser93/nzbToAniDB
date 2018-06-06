@@ -23,7 +23,7 @@
 import sys, os
 import shlex, subprocess
 try:
-	import configparser
+	import ConfigParser
 except ImportError:
 	import configparser as ConfigParser
 
@@ -38,7 +38,7 @@ if len(sys.argv) < 2 and not 'NZBPP_DIRECTORY' in os.environ:
 else:
 	config = {}
 	try:
-		cp = configparser.ConfigParser()
+		cp = ConfigParser.ConfigParser()
 		cp.read(os.path.join(os.path.dirname(sys.argv[0]), "anidb.cfg"))
 		for option in cp.options('integration'):
 			config[option] = cp.get('integration', option)

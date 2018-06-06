@@ -66,7 +66,7 @@ class File:
 		self.mtime = os.path.getmtime(name)
 		self.cached = False
 		if cache:
-			print "test"
+			print("test")
 			self.read_cache()
 		if False in [hasattr(self, a) for a in algorithms]:
 			self.cached = False
