@@ -12,7 +12,7 @@ First, rename anime.cfg.default to anime.cfg
 
 You have to enter your anidb username and password into the config file. Also you have to modify the target directory in the config file to tell the script, where your anime folder is. (the script will copy the files to a directory with the name of the anime in that folder.)
 
-####[AniDB]
+#### [AniDB]
 
 <table>
   <tr>
@@ -35,7 +35,7 @@ You have to enter your anidb username and password into the config file. Also yo
   </tr>
 </table>
 
-####[plex]
+#### [plex]
 
 <table>
   <tr>
@@ -49,7 +49,7 @@ You have to enter your anidb username and password into the config file. Also yo
   </tr>
 </table>
 
-####[xbmc]
+#### [xbmc]
 
 <table>
   <tr>
@@ -72,7 +72,7 @@ You have to enter your anidb username and password into the config file. Also yo
   </tr>
 </table>
 
-####[rename]
+#### [rename]
 
 <table>
   <tr>
@@ -107,7 +107,7 @@ You have to enter your anidb username and password into the config file. Also yo
   </tr>
 </table>
 
-####[integration]
+#### [integration]
 
 <table>
   <tr>
