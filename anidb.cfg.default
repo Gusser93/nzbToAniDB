@@ -1,9 +1,38 @@
 [AniDB]
+# AniDB username
 username     = 
+# AniDB password
 password     = 
+# Recurse into directories.
+recursiv     = yes
+# File suffix for recursive matching.
 suffix       = avi ogm mkv mp4 wmv m4v
+# Use cached values.
+cache        = yes
+# Match with TvDB and use TvDB naming pattern.
+tvdb         = no
+# Calculate additional checksums.
+multihash    = no
+# Identify files.
+identify     = no
+# Add files to mylist.
+add          = no
+# Mark files watched.
+watched      = no
+# Rename files
+rename       = no
+# Move files.
+move         = no
+# Delete folders after moving files.
+delete       = no
+# Target parent directory.
 directory    = /mnt/user/Media/Anime 
-directorymovie    = /mnt/user/Media/Anime 
+# Target parent directory for movies.
+directorymovie    = /mnt/user/Media/Anime
+# Refresh Media Server
+update       = no
+# Color output
+color        = yes
 
 [plex]
 host = 
@@ -27,6 +56,5 @@ TVDBFolderName = %TSTe%
 TVDBSeasonFolder = Season %TS%
 TVDBSpecialsFolder = Specials
  
-
-[integration]
-nzbToAnidb_switches = --recursive --tvdb --rename --move --delete --add --watched --no-color --update
+# [anidb]
+# nzbToAnidb_switches = --recursive --tvdb --rename --move --delete --add --watched --no-color --update

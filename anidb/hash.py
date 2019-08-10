@@ -129,4 +129,4 @@ def hash_files(files, cache = False, algorithms = ('ed2k',), num_threads = 1):
 			yield hashlist.pop(0)
 		except IndexError:
 			time.sleep(0.1)
-	raise StopIteration
+	return
